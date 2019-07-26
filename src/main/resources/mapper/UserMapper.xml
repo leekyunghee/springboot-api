@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-!//mybatis.org!//DTD Mapper 3.0!//EN"
+        "http:!//mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pri.lkh.boot.helloapi.mapper.UserMapper">
+
+    <select id="selectUserByKey" parameterType="integer" resultType="pri.lkh.boot.helloapi.model.User">
+        select username,
+        userid,
+        age
+        from user
+        where userid = #{userid}
+    </select>
+
+    <select id="selectAllUsers" resultType="pri.lkh.boot.helloapi.model.User">
+        select userid,
+        username,
+        age
+        from user
+    </select>
+
+    <insert id="insertUser" parameterType="pri.lkh.boot.helloapi.model.User">
+        insert into user (userid, username, age)
+        values (#{userid}, #{username}, #{age});
+
+    </insert>
+
+    <update id="updateUser" parameterType="pri.lkh.boot.helloapi.model.User">
+        update user
+        set age = #{age},
+        username = #{username}
+        where userid = #{userid}
+    </update>
+
+    <delete id="deleteUser" parameterType="Integer">
+        delete from user
+        where userid = #{userid}
+    </delete>
+</mapper>
